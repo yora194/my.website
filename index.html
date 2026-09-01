@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفاجأة خاصة ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe6e6;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            max-width: 420px;
+            width: 90%;
+            transition: all 0.4s ease;
+        }
+        h1 { color: #e6005c; font-size: 24px; margin-bottom: 20px; }
+        h2 { color: #cc0052; font-size: 20px; margin-bottom: 15px; }
+        p { font-size: 18px; line-height: 1.7; color: #444; margin-bottom: 25px; }
+        
+        input[type="password"] {
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ffb3d1;
+            border-radius: 12px;
+            text-align: center;
+            width: 85%;
+            margin-bottom: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #e6005c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 17px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(230, 0, 92, 0.2);
+        }
+        button:hover {
+            background-color: #cc0052;
+            transform: scale(1.03);
+        }
+        
+        .hidden { display: none; }
+        .error { color: #e6005c; font-size: 14px; margin-top: 10px; font-weight: bold; }
+        
+        .highlight {
+            color: #e6005c;
+            font-weight: bold;
+            font-size: 22px;
+            display: block;
+            margin-top: 10px;
+        }
+        .forever {
+            color: #e6005c;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ffe6e6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- غلاف البداية -->
+        <div id="cover-screen">
+            <h1>مفاجأة صغيرة لك ✨</h1>
+            <button onclick="goToPassword()">اضغط هنا للمفاجأة 🎁</button>
+        </div>
+
+        <!-- غلاف الباسورد -->
+        <div id="password-screen" class="hidden">
+            <h2>ادخل كلمة السر لرؤية المفاجأة 🔒</h2>
+            <input type="password" id="passInput" placeholder="اكتب الباسورد هنا">
+            <br>
+            <button onclick="checkPassword()">دخول</button>
+            <div id="error-msg" class="error"></div>
+        </div>
+
+        <!-- السلايد 1: الرسالة الأولى -->
+        <div id="step-1" class="hidden">
+            <p>حبيبي حبيت اعملك مفاجأة صغيرة ❤️</p>
+            <button onclick="nextStep(2)">التالي ✨</button>
+        </div>
+
+        <!-- السلايد 2: تاريخ الارتباط -->
+        <div id="step-2" class="hidden">
+            <p>يا ترى فاكر تاريخ ارتبطتنا؟ 📅</p>
+            <span class="highlight">16/1/2026</span>
+            <br><br>
+            <button onclick="nextStep(3)">التالي ✨</button>
+        </div>
+
+        <!-- السلايد 3: الرسالة الطويلة -->
+        <div id="step-3" class="hidden">
+            <p>اليوم دا من احسن وأسعد يوم في حياتي أنه عرفني عليك انت يا نن عيوني 🥺❤️</p>
+            <button onclick="nextStep(4)">التالي ✨</button>
+        </div>
+
+        <!-- السلايد 4: النهاية -->
+        <div id="step-4" class="hidden">
+            <p>واخيراً يا حياتي أحب أقولك مهما دورت مش هلاقي في حبك ولا في حنيتك ولا هتلاقي شخص زيك. ❤️</p>
+            <span class="highlight" style="font-size: 24px;">I love u joo</span>
+            <div class="forever">JoJo & YaRuty forever ♾️ ♥️</div>
+        </div>
+    </div>
+
+    <script>
+        function goToPassword() {
+            document.getElementById('cover-screen').classList.add('hidden');
+            document.getElementById('password-screen').classList.remove('hidden');
+        }
+
+        function checkPassword() {
+            var input = document.getElementById('passInput').value;
+            if (input === "1612026") {
+                document.getElementById('password-screen').classList.add('hidden');
+                document.getElementById('step-1').classList.remove('hidden');
+            } else {
+                document.getElementById('error-msg').innerText = "الباسورد غير صحيح، حاول تاني ❤️";
+            }
+        }
+
+        function nextStep(stepNumber) {
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById('step-' + i).classList.add('hidden');
+            }
+            document.getElementById('step-' + stepNumber).classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
